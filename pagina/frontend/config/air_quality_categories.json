@@ -1,0 +1,54 @@
+{
+  "descripcion": "Configuración de categorías del Índice de Calidad del Aire (ICA). Los colores y rangos son una representación visual configurable y NO constituyen la clasificación validada del modelo de Machine Learning. Los rangos de PM2.5 son referenciales y deben ajustarse cuando se implemente y valide la regla oficial de clasificación ICA del proyecto.",
+  "variable_objetivo": "Nivel ICA",
+  "categorias": [
+    {
+      "id": "buena",
+      "nombre": "Buena",
+      "color": "#22c55e",
+      "emoji": "🟢",
+      "descripcion": "Calidad del aire satisfactoria; riesgo bajo o nulo.",
+      "pm25_referencia": [0, 12]
+    },
+    {
+      "id": "moderada",
+      "nombre": "Moderada",
+      "color": "#eab308",
+      "emoji": "🟡",
+      "descripcion": "Aceptable; grupos muy sensibles podrían presentar síntomas leves.",
+      "pm25_referencia": [12.1, 35.4]
+    },
+    {
+      "id": "dania_sensibles",
+      "nombre": "Dañina para grupos sensibles",
+      "color": "#f97316",
+      "emoji": "🟠",
+      "descripcion": "Grupos sensibles pueden experimentar efectos en la salud.",
+      "pm25_referencia": [35.5, 55.4]
+    },
+    {
+      "id": "danina",
+      "nombre": "Dañina",
+      "color": "#ef4444",
+      "emoji": "🔴",
+      "descripcion": "Toda la población puede empezar a experimentar efectos en la salud.",
+      "pm25_referencia": [55.5, 150.4]
+    },
+    {
+      "id": "muy_danina",
+      "nombre": "Muy dañina",
+      "color": "#a855f7",
+      "emoji": "🟣",
+      "descripcion": "Advertencias sanitarias; toda la población en riesgo.",
+      "pm25_referencia": [150.5, 250.4]
+    },
+    {
+      "id": "peligrosa",
+      "nombre": "Peligrosa",
+      "color": "#7f1d1d",
+      "emoji": "⚫",
+      "descripcion": "Alerta de emergencia sanitaria.",
+      "pm25_referencia": [250.5, 999]
+    }
+  ]
+}

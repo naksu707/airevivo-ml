@@ -1,0 +1,40 @@
+services:
+  backend:
+    build: ./backend
+    working_dir: /app
+    command: uvicorn main:app --reload --host 0.0.0.0 --port 8000
+    env_file:
+      - ./backend/.env
+    environment:
+      DATABASE_PATH: /data/air_quality.db
+      CSV_PATH: /seed/reporte_sisaire.csv
+      MODEL_PATH: /models/modelo_taller3_clasificacion.joblib
+      CORS_ORIGINS: http://localhost:3000
+    volumes:
+      - ./backend:/app
+      - ./frontend/data:/seed:ro
+      - ./modelo:/models:ro
+      - sqlite_data:/data
+    ports:
+      - "8000:8000"
+
+  frontend:
+    image: node:20-bookworm
+    working_dir: /app
+    command: sh -c "corepack enable && pnpm install && pnpm dev --hostname 0.0.0.0"
+    env_file:
+      - ./backend/.env
+    environment:
+      BACKEND_URL: http://backend:8000
+      WATCHPACK_POLLING: "true"
+    volumes:
+      - ./frontend:/app
+      - frontend_node_modules:/app/node_modules
+    ports:
+      - "3000:3000"
+    depends_on:
+      - backend
+
+volumes:
+  frontend_node_modules:
+  sqlite_data:
